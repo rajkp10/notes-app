@@ -4,14 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
+import { AppProvider } from "./components/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
-    <ChakraProvider>
+  <ChakraProvider>
+    <AppProvider>
       <App />
-    </ChakraProvider>
-  </>
+    </AppProvider>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

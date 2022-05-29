@@ -7,10 +7,17 @@ import {
 } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 import React from "react";
+import { useGlobalContext } from "./context";
 
 function Home() {
+  const { searchNotes } = useGlobalContext();
+
   return (
-    <VStack m={4} w={{ sm: "90vw", md: "80vw", lg: "70vw" }} spacing="4">
+    <VStack
+      m={4}
+      w={{ base: "90vw", sm: "90vw", md: "80vw", lg: "70vw" }}
+      spacing="4"
+    >
       <Heading>Notes App</Heading>
       <InputGroup>
         <InputLeftElement
@@ -18,7 +25,17 @@ function Home() {
           color="gray.500"
           children={<FaSearch />}
         />
-        <Input type="text" variant="outline" />
+        <Input
+          type="text"
+          variant="flushed"
+          bg="gray.100"
+          borderColor="gray.500"
+          borderBottom="2px"
+          borderTopRadius="xl"
+          placeholder="Search Note by Title"
+          fontWeight="bold"
+          onChange={(e) => searchNotes(e.target.value)}
+        />
       </InputGroup>
     </VStack>
   );

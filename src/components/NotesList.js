@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Box,
-  Button,
   ButtonGroup,
   IconButton,
   SimpleGrid,
@@ -9,53 +7,56 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
 
-import { data } from "./data";
+import AddNote from "./AddNote";
+import { useGlobalContext } from "./context";
 
 function NotesList() {
+  const { notes, deleteNote } = useGlobalContext();
+
   return (
-    <VStack m={4} w={{ sm: "90vw", md: "80vw", lg: "70vw" }}>
-      <SimpleGrid w="100%" minChildWidth="250px" spacing="4" border="2x">
-        <VStack
-          h="200px"
-          borderRadius="2xl"
-          boxShadow="xl"
-          bg="blue.300"
-          justifyContent="center"
-        >
-          <IconButton
-            icon={<FaPlus />}
-            size="lg"
-            colorScheme="green"
-            isRound="true"
-          />
-        </VStack>
-        {data.map((dat) => (
+    <VStack
+      m={4}
+      py={4}
+      w={{ base: "90vw", sm: "90vw", md: "80vw", lg: "70vw" }}
+    >
+      <SimpleGrid w="100%" columns={{ sm: 1, md: 2, lg: 3 }} spacing="4">
+        {notes.map((note) => (
           <VStack
             p="3"
-            h="200px"
-            bg="yellow.200"
+            h="250px"
+            bg="yellow.300"
+            border="2px"
+            borderColor="yellow.800"
             borderRadius="2xl"
             boxShadow="xl"
             divider={<StackDivider />}
+            key={note.id}
           >
-            <Text h="10%">{dat.title}</Text>
+            <Text h="10%" fontSize="xl" fontWeight="bold">
+              {note.title}
+            </Text>
             <Text
               h="70%"
               w="100%"
               alignSelf="flex-start"
-              overflow="hidden"
-              textOverflow="ellipsis"
+              overflow="auto"
+              className="content"
             >
-              {dat.description}
+              {note.description}
             </Text>
-            <ButtonGroup h="20%" gap="3" alignSelf="flex-end" size="sm">
+            <ButtonGroup h="20%" gap="2" alignSelf="flex-end" size="sm">
               <IconButton icon={<FaEdit />} colorScheme="blue" />
-              <IconButton icon={<FaTrashAlt />} colorScheme="red" />
+              <IconButton
+                icon={<FaTrashAlt />}
+                colorScheme="red"
+                onClick={() => deleteNote(note.id)}
+              />
             </ButtonGroup>
           </VStack>
         ))}
+        <AddNote />
       </SimpleGrid>
     </VStack>
   );
