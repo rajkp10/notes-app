@@ -21,6 +21,7 @@ import {
 import { FaPlus, FaCheck } from "react-icons/fa";
 import { nanoid } from "nanoid";
 import { useGlobalContext } from "./context";
+import { motion } from "framer-motion";
 
 function AddNote() {
   const { addNote, values, setValues, checkInput } = useGlobalContext();
@@ -48,6 +49,8 @@ function AddNote() {
         boxShadow="xl"
         bg="blue.300"
         justifyContent="center"
+        as={motion.div}
+        animate={{ x: [-100, 0], opacity: [0, 1] }}
       >
         <IconButton
           icon={<FaPlus />}
