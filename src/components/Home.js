@@ -18,7 +18,9 @@ function Home() {
       w={{ base: "90vw", sm: "90vw", md: "80vw", lg: "70vw" }}
       spacing="4"
     >
-      <Heading>Notes App</Heading>
+      <Heading color="blue.300" textShadow="1.5px 1.5px black">
+        Notes App
+      </Heading>
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"

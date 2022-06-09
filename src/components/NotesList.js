@@ -23,8 +23,8 @@ function NotesList() {
       w={{ base: "90vw", sm: "90vw", md: "80vw", lg: "70vw" }}
     >
       <SimpleGrid w="100%" columns={{ sm: 1, md: 2, lg: 3 }} spacing="4">
+        <AddNote />
         <AnimatePresence>
-          <AddNote />
           {notes.map((note) => (
             <VStack
               p="3"
@@ -39,7 +39,10 @@ function NotesList() {
               as={motion.div}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
+              exit={{
+                opacity: 0,
+                transition: { type: "spring", stiffness: 100 },
+              }}
               whileHover={{ scale: 1.1 }}
               layout
             >

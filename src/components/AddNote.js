@@ -44,13 +44,13 @@ function AddNote() {
   return (
     <>
       <VStack
-        h="250px"
+        h={{ base: "100px", sm: "250px" }}
         borderRadius="2xl"
         boxShadow="xl"
         bg="blue.300"
         justifyContent="center"
         as={motion.div}
-        animate={{ x: [-100, 0], opacity: [0, 1] }}
+        animate={{ x: [-50, 0], opacity: [0, 1] }}
       >
         <IconButton
           icon={<FaPlus />}

@@ -3,7 +3,7 @@ import {
   TITLE_ERROR,
   DESCRIPTION_ERROR,
   ADDED_SUCCESS,
-  EDITED_SUCCESS,
+  // EDITED_SUCCESS,
   DELETED_SUCCESS,
   SUCCESS,
   ERROR,
@@ -28,7 +28,6 @@ const AppProvider = ({ children }) => {
   const addNote = (note) => {
     setAllNotes([...allNotes, note]);
     setValues(initialValues);
-
     message(ADDED_SUCCESS, SUCCESS);
   };
 
@@ -40,11 +39,9 @@ const AppProvider = ({ children }) => {
     message(DELETED_SUCCESS, SUCCESS);
   };
 
-  const editNote = (id) => {};
-
   const searchNotes = (param) => {
     const searchedNotes = allNotes.filter((note) => {
-      return note.title.includes(param);
+      return note.title.toLowerCase().includes(param.toLowerCase());
     });
     setNotes(searchedNotes);
   };
@@ -58,7 +55,6 @@ const AppProvider = ({ children }) => {
       message(DESCRIPTION_ERROR, ERROR);
       return false;
     }
-
     return true;
   };
 
