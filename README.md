@@ -2,6 +2,14 @@
 
 https://notes-app-rajkp10.netlify.app
 
+# Tools Used
+
+This site was created using ReactJS, Chakra UI and Framer Motion
+
+# Preview
+
+![notes-app](https://user-images.githubusercontent.com/96880670/190869476-a2165290-5c1e-4108-ab13-ea825397b46b.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
